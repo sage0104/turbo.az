@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="./output.css" rel="stylesheet" />
+        <link rel="stylesheet" href="./style.css"/>
+        <title>Turbo.az</title>
+    </head>
+    <body>
+        <header class="p-3 bg-red-800 text-white ">
+            <div class="container flex justify-between h-10 mx-auto ">
+                <a onclick="printCards()" rel="noopener noreferrer" href="#" aria-label="Back to homepage" class="flex items-center text-[1.6em]">Turbo.az</a>
+                <ul class="hidden  lg:flex items-center">
+                    <li class="flex">
+                        <a rel="noopener noreferrer" href="#" class="flex items-center lg:px-3  md:px-2 transition hover:border-b-2 whitespace-nowrap">Butun elanlar</a>
+                    </li>
+                    <li class="flex">
+                        <a rel="noopener noreferrer" href="#" class="flex items-center lg:px-3  md:px-2 hover:border-b-2 whitespace-nowrap">Avtosalonlar</a>
+                    </li>
+                    <li class="flex">
+                        <a rel="noopener noreferrer" href="#" class="flex items-center lg:px-3 md:px-2 hover:border-b-2 whitespace-nowrap">Moto</a>
+                    </li>
+                    <li class="flex">
+                        <a rel="noopener noreferrer" href="#" class="flex items-center lg:px-3 md:px-2 hover:border-b-2 whitespace-nowrap">Ehtiyat hisseler ve aksesuarlar</a>
+                    </li>
+                    <li>
+                        <fieldset class="w-full text-gray-800  md:px-2 ">
+                            <label for="Search" class="hidden">Search</label>
+                            <div class="relative">
+                                <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+                                    <button type="button" title="search" class="p-1 focus:outline-none focus:ring">
+                                        <svg fill="currentColor" viewBox="0 0 512 512" class="w-4 h-4 dark:text-gray-800">
+                                            <path d="M479.6,399.716l-81.084-81.084-62.368-25.767A175.014,175.014,0,0,0,368,192c0-97.047-78.953-176-176-176S16,94.953,16,192,94.953,368,192,368a175.034,175.034,0,0,0,101.619-32.377l25.7,62.2L400.4,478.911a56,56,0,1,0,79.2-79.195ZM48,192c0-79.4,64.6-144,144-144s144,64.6,144,144S271.4,336,192,336,48,271.4,48,192ZM456.971,456.284a24.028,24.028,0,0,1-33.942,0l-76.572-76.572-23.894-57.835L380.4,345.771l76.573,76.572A24.028,24.028,0,0,1,456.971,456.284Z"></path>
+                                        </svg>
+                                    </button>
+                                </span>
+                                <input oninput="axtar()" id="searchBtn" type="text" name="Search" placeholder="Axtaris..." class="w-32 py-2 pl-10 text-sm rounded-md sm:w-auto focus:outline-none dark:bg-gray-100 dark:text-gray-800 focus:dark:bg-gray-50 focus:dark:border-violet-600">
+                            </div>
+                        </fieldset>
+                    </li>
+                    <li>
+                        <button class="bg-green-600 text-white rounded-[10px] px-[20px] transition hover:bg-green-500  py-[8px] whitespace-nowrap">+ Yeni elan</button>
+                    </li>
+                    <li>
+                        <button onclick="handleBasket(true)" class=" md:px-2 lg:px-3">
+                            <img class="min-w-7 min-h-7" src="img/shopping-basket.png" alt="" />
+                        </button>
+                    </li>
+                </ul>
+                <div class="flex gap-5 lg:hidden">
+                    
+                    <button onclick="handleBasket(true)">
+                        <img class="w-6 h-6" src="img/menu.png" alt="">
+                    </button>
+                </div>
+            </div>
+        </header>
+        <main class="px-3">
+            <div class="container mx-auto">
+                <select onchange="displayCars()" id="markalar" class="border my-3"></select>
+                <div id="cards" class="flex justify-center gap-4 flex-wrap ">
+                </div>
+            </div>
+            <div id="sidebar" class="bg-gray-200 fixed transition-all w-[30vw] h-[100vh] top-0 right-[-30vw]">
+                <div style="cursor: pointer;"  onclick="handleBasket(false)" class="text-[20px] text-zinc-900 absolute right-[20px] top-[0px] py-3">🗙</div>
+            </div>
+        </main>
+        <script src="script.js"></script>
+    </body>
+</html>
