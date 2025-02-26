@@ -20,29 +20,44 @@ const sidebar = document.getElementById('sidebar');
 const breadcrumb = document.getElementById('breadcrumb');
 const searchBtn = document.getElementById('searchBtn');
 let markalar = document.getElementById('markalar');
-const option = document.querySelector('option')
+const option = document.querySelector('option');
+const showBtn = document.getElementById('showBtn')
+const shoppingList = document.getElementById('shoppingList')
 
-const printCards = () => {
-    let kod = ''
-    cards.innerHTML = '';
-    cars.map(item => kod += `
-        <div class="rounded-md shadow-md bg-gray-50 text-gray-800 w-[200px] ">
-            <div class="w-[200px] h-[180px] overflow-hidden">
-                <img style="cursor:pointer" onclick="showDet(${item.id})" src="${item.img}" alt="" class="w-full h-full object-cover/ ">
-            </div>
-            <div class="flex flex-col justify-between p-4 space-y-4 bg-gray-100">
-                <div class="space-y-2">
-                    <h2 onclick="showDet(${item.id})" class="text-xl font-semibold tracking-wide">${item.qiymet} AZN</h2>
-                    <p class="text-gray-800">${item.marka} ${item.model}</p>
-                    <p class="text-gray-800">${item.il}, ${item.mator}, <span style="color:${item.reng}">${item.reng}</span></p>
+let cardsNum = 4; // Initially show 4 cards
+
+function printCards() {
+    let kod = '';
+    const visibleCars = cars.slice(0, cardsNum); // Show only the first 'cardsNum' cars
+
+    visibleCars.forEach(item => {
+        kod += `
+            <div class="rounded-md shadow-md bg-gray-50 text-gray-800">
+                <div class="w-[300px] h-[265px] overflow-hidden">
+                    <img style="cursor:pointer" onclick="showDet(${item.id})" src="${item.img}" alt="" class="w-full h-full object-cover">
                 </div>
-            </div>
-        </div>`                             
-    );
+                <div class="flex flex-col justify-between p-4 space-y-4 bg-gray-100">
+                    <div class="space-y-2">
+                        <h2 onclick="showDet(${item.id})" class="text-xl font-semibold tracking-wide">${item.qiymet} AZN</h2>
+                        <p class="text-gray-800">${item.marka} ${item.model}</p>
+                        <p class="text-gray-800">${item.il}, ${item.mator}, <span style="color:${item.reng}">${item.reng}</span></p>
+                    </div>
+                </div>
+            </div>`;
+    });
 
-        cards.innerHTML = kod;
-};
+    cards.innerHTML = kod;
+    
+    showBtn.style.display = cardsNum >= cars.length ? 'none' : 'block';
+}
+
+function showMore() {
+    cardsNum += 4; 
+    printCards();
+}
+
 printCards();
+
 
 function showDet(id) {
     const obj = cars.find(item => item.id == id)
@@ -81,9 +96,9 @@ function handleBasket(status) {
 function axtar() {
     let axtaris = searchBtn.value.toLowerCase();
     let kod = ''
-    cars.filter(item => item.marka.toLowerCase().includes(axtaris) ? kod += `<div class="rounded-md shadow-md bg-gray-50 text-gray-800 max-w-[250px] ">
-                                                                        <div class="max-w-[250px] h-[180px] overflow-hidden">
-                                                                            <img style="cursor:pointer" onclick="showDet(${item.id})" src="${item.img}" alt="" class="w-full h-full object-cover/ ">
+    cars.filter(item => item.marka.toLowerCase().includes(axtaris) ? kod += `<div class="rounded-md shadow-md bg-gray-50 text-gray-800  ">
+                                                                        <div class="w-[300px] h-[265px] overflow-hidden">
+                                                                            <img style="cursor:pointer" onclick="showDet(${item.id})" src="${item.img}" alt="" class=" w-full h-full object-cover ">
                                                                         </div>
                                                                         <div class="flex flex-col justify-between p-4 space-y-4 bg-gray-100">
                                                                             <div class="space-y-2">
@@ -105,9 +120,9 @@ function displayCars() {
     const selectedMarka = markalar.value; 
 
     if (selectedMarka === 'All') {
-        cars.map(item => kod += `<div class="rounded-md shadow-md bg-gray-50 text-gray-800 w-[200px] ">
-                                    <div class="w-[200px] h-[180px] overflow-hidden">
-                                        <img style="cursor:pointer" onclick="showDet(${item.id})" src="${item.img}" alt="" class="w-full h-full object-cover/ ">
+        cars.map(item => kod += `<div class="rounded-md shadow-md bg-gray-50 text-gray-800 ">
+                                    <div class="w-[300px] h-[265px] overflow-hidden">
+                                        <img style="cursor:pointer" onclick="showDet(${item.id})" src="${item.img}" alt="" class="w-full h-full object-cover ">
                                     </div>
                                     <div class="flex flex-col justify-between p-4 space-y-4 bg-gray-100">
                                         <div class="space-y-2">
@@ -120,9 +135,9 @@ function displayCars() {
                                 `);
     } else {
         cars.filter(item => item.marka === selectedMarka)
-                  .map(item => kod += `<div class="rounded-md shadow-md bg-gray-50 text-gray-800 w-[200px] ">
-                                            <div class="w-[200px] h-[180px] overflow-hidden">
-                                                <img style="cursor:pointer" onclick="showDet(${item.id})" src="${item.img}" alt="" class="w-full h-full object-cover/ ">
+                  .map(item => kod += `<div class="rounded-md shadow-md bg-gray-50 text-gray-800  ">
+                                            <div class="w-[300px] h-[265px] overflow-hidden">
+                                                <img style="cursor:pointer" onclick="showDet(${item.id})" src="${item.img}" alt="" class="w-full h-full object-cover ">
                                             </div>
                                             <div class="flex flex-col justify-between p-4 space-y-4 bg-gray-100">
                                                 <div class="space-y-2">

@@ -44,14 +44,14 @@
                     </li>
                     <li>
                         <button onclick="handleBasket(true)" class=" md:px-2 lg:px-3">
-                            <img class="min-w-7 min-h-7" src="img/shopping-basket.png" alt="" />
+                            <img class="min-w-7 min-h-7" src="src/img/shopping-basket.png" alt="" />
                         </button>
                     </li>
                 </ul>
                 <div class="flex gap-5 lg:hidden">
                     
                     <button onclick="handleBasket(true)">
-                        <img class="w-6 h-6" src="img/menu.png" alt="">
+                        <img class="w-6 h-6" src="src/img/menu.png" alt="">
                     </button>
                 </div>
             </div>
@@ -61,6 +61,9 @@
                 <select onchange="displayCars()" id="markalar" class="border my-3"></select>
                 <div id="cards" class="flex justify-center gap-4 flex-wrap ">
                 </div>
+            </div>
+            <div class="flex justify-center">
+                <button id="showBtn" onclick="showMore()" type="button" class="px-6 py-3 text-sm rounded-md hover:underline bg-slate-100 text-gray-900">Load more posts...</button>
             </div>
             <div id="sidebar" class="bg-gray-200 fixed transition-all w-[30vw] h-[100vh] top-0 right-[-30vw]">
                 <div style="cursor: pointer;"  onclick="handleBasket(false)" class="text-[20px] text-zinc-900 absolute right-[20px] top-[0px] py-3">🗙</div>
